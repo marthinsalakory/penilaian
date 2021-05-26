@@ -38,7 +38,7 @@ include "fungsi.php";
     <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini sidebar-collapse layout-fixed">
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -54,10 +54,10 @@ include "fungsi.php";
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Lulus</a>
+                    <a href="<?= $BASEURL; ?>/lulus.php" class="nav-link">Lulus</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Tidak Lulus</a>
+                    <a href="<?= $BASEURL; ?>/tidak_lulus.php" class="nav-link">Tidak Lulus</a>
                 </li>
             </ul>
 
@@ -147,7 +147,7 @@ include "fungsi.php";
                         </li>
                         <li class="nav-item">
                             <a href="<?= $BASEURL; ?>/input.php" class="nav-link input">
-                                <i class="nav-icon fas fa-star-half-alt"></i>
+                                <i class="nav-icon fas fa-keyboard"></i>
                                 <p>
                                     Input Nilai
                                 </p>
@@ -172,13 +172,13 @@ include "fungsi.php";
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="<?= $BASEURL; ?>/lulus.php" class="nav-link lulus">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-user-graduate nav-icon"></i>
                                         <p>Lulus</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="<?= $BASEURL; ?>/tidak_lulus.php" class="nav-link tidak_lulus">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-graduation-cap nav-icon"></i>
                                         <p>Tidak Lulus</p>
                                     </a>
                                 </li>

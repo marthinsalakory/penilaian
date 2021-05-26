@@ -2,6 +2,24 @@
 
 include "header.php";
 
+// cek apakah tombol jual sudah ditekan atau belum
+if (isset($_POST["submit"])) {
+    // cek apakah data berhasi di tambahkan atau tidak
+    if (insert($_POST) > 0) {
+        echo "
+        <script>
+            alert('Data Berhasil Ditambahkan');
+            document.location.href = 'data.php';
+        </script>
+        ";
+    } else {
+        echo "
+        <script>
+            alert('Data gagal ditambahkan');
+        </script>
+        ";
+    }
+}
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -10,11 +28,11 @@ include "header.php";
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Semua Data Nilai</h1>
+                    <h1>Halaman Penginputan Nilai</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Semua Data</a></li>
+                        <li class="breadcrumb-item"><a href="#">Input</a></li>
                         <li class="breadcrumb-item active">Penilaian</li>
                     </ol>
                 </div>
@@ -29,53 +47,46 @@ include "header.php";
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Daftar Nilai Mahasiswa</h3>
+                            <h3 class="card-title">Input Nilai</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table style="text-align: center;" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr class="bg-primary">
-                                        <th>Nama</th>
-                                        <th>NIM</th>
-                                        <th>Nilai Tugas</th>
-                                        <th>Nilai UTS</th>
-                                        <th>Nilai UAS</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input type="text">
-                                        </td>
-                                        <td>
-                                            <input type="text">
-                                        </td>
-                                        <td>
-                                            <input type="text">
-                                        </td>
-                                        <td>
-                                            <input type="text">
-                                        </td>
-                                        <td>
-                                            <input type="text">
-                                        </td>
-                                    </tr>
-                                    <tr id="tampil">
-                                        <th class="bg-primary"></th>
-                                        <th class="bg-success">
-                                            <button id="tambah" style="background-color: transparent; border: 0mm;"><i class="fas fa-plus"></i></button>
-                                        </th>
-                                        <th class="bg-warning">
-                                            <button style="background-color: transparent; border: 0mm;">KIRIM</button>
-                                        </th>
-                                        <th class="bg-danger">
-                                            <button id="kurang" style="background-color: transparent; border: 0mm;"><i class="fas fa-minus"></i></button>
-                                        </th>
-                                        <th class="bg-primary"></th>
-                                    </tr>
-                                </tbody>
-                            </table><br><br><br><br><br><br><br><br><br><br><br><br>
+                            <!-- /.row -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <!-- /.card-header -->
+                                        <div class="card-body table-responsive p-0">
+                                            <div class="input-group mb-3">
+                                                <input style="font-weight: 900;text-align: center; background-color: blue; color: aliceblue;" type="text" class="form-control" value="Nama" readonly>
+                                                <input style="font-weight: 900;text-align: center; background-color: blue; color: aliceblue;" type="text" class="form-control" value="NIM" readonly>
+                                                <input style="font-weight: 900;text-align: center; background-color: blue; color: aliceblue;" type="text" class="form-control" value="Matakuliah" readonly>
+                                                <input style="font-weight: 900;text-align: center; background-color: blue; color: aliceblue;" type="text" class="form-control" value="Nilai Tugas" readonly>
+                                                <input style="font-weight: 900;text-align: center; background-color: blue; color: aliceblue;" type="text" class="form-control" value="Nilai UTS" readonly>
+                                                <input style="font-weight: 900;text-align: center; background-color: blue; color: aliceblue;" type="text" class="form-control" value="Nilai UAS" readonly>
+                                            </div>
+                                            <form action="" method="POST">
+                                                <div class="input-group mb-3">
+                                                    <input required style="text-align: center;" type="text" class="form-control" name="nama[]" aria-label="nama">
+                                                    <input required style="text-align: center;" type="number" class="form-control" name="nim[]" aria-label="nim">
+                                                    <input required style="text-align: center;" type="text" class="form-control" name="matakuliah[]" aria-label="matakuliah">
+                                                    <input required style="text-align: center;" type="number" max="100" class="form-control" name="nilai_tugas[]" aria-label="nilai_tugas">
+                                                    <input required style="text-align: center;" type="number" max="100" class="form-control" name="nilai_uts[]" aria-label="nilai_uts">
+                                                    <input required style="text-align: center;" type="number" max="100" class="form-control" name="nilai_uas[]" aria-label="nilai_uas">
+                                                </div>
+                                                <div class="input-group mb-3" id="tampil">
+                                                    <input id="tambah" style="font-weight: 900;text-align: center; background-color: green; color: aliceblue;" type="button" class="form-control" value="+" readonly>
+                                                    <input style="font-weight: 900;text-align: center; background-color: blue; color: aliceblue;" type="submit" class="form-control" value="Kirim" name="submit" readonly>
+                                                    <input id="kurang" style="font-weight: 900;text-align: center; background-color: red; color: aliceblue;" type="button" class="form-control" value="-" readonly>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+                                </div>
+                            </div>
+                            <!-- /.row --><br><br><br><br><br><br><br><br><br><br><br><br>
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -94,7 +105,16 @@ include "header.php";
 <script>
     $(document).ready(function() {
         $("#tambah").click(function() {
-            $("#tampil").before("<tr id='hapus'><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td><td><input type='text'></td></tr>");
+            $("#tampil").before(`
+                <div class="input-group mb-3" id="hapus">
+                    <input style="text-align: center;" required type="text" class="form-control" name="nama[]" aria-label="nama">
+                    <input style="text-align: center;" required type="number" class="form-control" name="nim[]" aria-label="nim">
+                    <input style="text-align: center;" required type="text" class="form-control" name="matakuliah[]" aria-label="matakuliah">
+                    <input style="text-align: center;" required type="number" max="100" class="form-control" name="nilai_tugas[]" aria-label="nilai_tugas">
+                    <input style="text-align: center;" required type="number" max="100" class="form-control" name="nilai_uts[]" aria-label="nilai_uts">
+                    <input style="text-align: center;" required type="number" max="100" class="form-control" name="nilai_uas[]" aria-label="nilai_uas">
+                </div>
+            `);
         });
         $("#kurang").click(function() {
             $("#hapus").remove();

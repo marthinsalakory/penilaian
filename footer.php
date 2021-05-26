@@ -61,6 +61,7 @@
 <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
 <!-- Page specific script -->
 <script>
     $(function() {
@@ -84,17 +85,21 @@
 <!-- Untuk Text Active Pada SideBar -->
 <script>
     if (window.location.href == 'http://localhost/penilaian/') {
+        $('.sidebar-collapse').removeClass('sidebar-collapse');
         $('.dashboard').addClass(' active');
     } else if (window.location.href == 'http://localhost/penilaian/index.php') {
         $('.dashboard').addClass(' active');
     } else if (window.location.href == 'http://localhost/penilaian/input.php') {
         $('.input').addClass(' active');
     } else if (window.location.href == 'http://localhost/penilaian/data.php') {
+        $('.sidebar-collapse').removeClass('sidebar-collapse');
         $('.data').addClass(' active');
     } else if (window.location.href == 'http://localhost/penilaian/lulus.php') {
+        $('.sidebar-collapse').removeClass('sidebar-collapse');
         $('.kriteria').addClass(' menu-open');
         $('.lulus').addClass(' active');
     } else if (window.location.href == 'http://localhost/penilaian/tidak_lulus.php') {
+        $('.sidebar-collapse').removeClass('sidebar-collapse');
         $('.kriteria').addClass(' menu-open');
         $('.tidak_lulus').addClass(' active');
     }

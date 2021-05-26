@@ -2,6 +2,26 @@
 
 include "header.php";
 
+// untuk delete data
+if (isset($_POST["delete"])) {
+    // cek apakah data berhasi di tambahkan atau tidak
+    if (delete($_POST) > 0) {
+        echo "
+        <script>
+            alert('Data Berhasil Dihapus');
+            document.location.href = 'lulus.php';
+        </script>
+        ";
+    } else {
+        echo "
+        <script>
+            alert('Data gagal dihapus');
+            document.location.href = 'lulus.php';
+        </script>
+        ";
+    }
+}
+
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -38,47 +58,35 @@ include "header.php";
                                     <tr class="bg-primary">
                                         <th>Nama</th>
                                         <th>NIM</th>
+                                        <th>Matakuliah</th>
                                         <th>Nilai Tugas</th>
                                         <th>Nilai UTS</th>
                                         <th>Nilai UAS</th>
+                                        <th>Nilai Akhir</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Marthin</td>
-                                        <td>201971060</td>
-                                        <td>32</td>
-                                        <td>50</td>
-                                        <td>100</td>
-                                    </tr>
-                                    <tr>
-                                        <td>dio</td>
-                                        <td>201871090</td>
-                                        <td>64</td>
-                                        <td>11</td>
-                                        <td>20</td>
-                                    </tr>
-                                    <tr>
-                                        <td>nesya</td>
-                                        <td>201871020</td>
-                                        <td>32</td>
-                                        <td>30</td>
-                                        <td>10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>edo</td>
-                                        <td>201871090</td>
-                                        <td>33</td>
-                                        <td>55</td>
-                                        <td>40</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Marthin</td>
-                                        <td>201971060</td>
-                                        <td>32</td>
-                                        <td>50</td>
-                                        <td>100</td>
-                                    </tr>
+                                    <?php foreach ($nilai as $n) : ?>
+                                        <?php if ($n['nilai_akhir'] >= 60) : ?>
+                                            <tr>
+                                                <td><?= $n['nama']; ?></td>
+                                                <td><?= $n['nim']; ?></td>
+                                                <td><?= $n['matakuliah']; ?></td>
+                                                <td><?= $n['nilai_tugas']; ?></td>
+                                                <td><?= $n['nilai_uts']; ?></td>
+                                                <td><?= $n['nilai_uas']; ?></td>
+                                                <td><?= $n['nilai_akhir']; ?></td>
+                                                <td>
+                                                    <form action="" method="POST">
+                                                        <input type="hidden" name="id" value="<?= $n['id']; ?>">
+                                                        <button type="submit" class="btn btn-danger  btn-sm" name="delete"><i class="fas fa-trash-alt"></i></button>
+                                                    </form>
+                                                    <a type="button" class="btn btn-warning btn-sm" href="<?= $BASEURL; ?>/edit.php?id=<?= $n['id']; ?>"><i class="fas fa-edit"></i></a>
+                                                </td>
+                                            </tr>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
