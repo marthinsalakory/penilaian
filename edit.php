@@ -23,7 +23,7 @@ if (isset($_POST["submit"])) {
     } else {
         echo "
         <script>
-            alert('Data gagal Diubah');
+            alert('Data Belum Diubah');
         </script>
         ";
     }
@@ -54,7 +54,7 @@ if (isset($_POST["submit"])) {
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header bg-success">
                             <h3 class="card-title">Edit Nilai</h3>
                         </div>
                         <!-- /.card-header -->
@@ -64,7 +64,7 @@ if (isset($_POST["submit"])) {
                                 <div class="col-12">
                                     <div class="card">
                                         <!-- general form elements disabled -->
-                                        <div class="card card-warning">
+                                        <div class="card card-primary">
                                             <div class="card-header">
                                                 <h3 class="card-title">Edit Nilai</h3>
                                             </div>
@@ -77,13 +77,13 @@ if (isset($_POST["submit"])) {
                                                             <!-- text input -->
                                                             <div class="form-group">
                                                                 <label>Nama</label>
-                                                                <input name="nama" value="<?= $edit['nama']; ?>" type="text" class="form-control" placeholder="Enter ...">
+                                                                <input style="background-color: yellow; color: black;" name="nama" value="<?= $edit['nama']; ?>" type="text" class="form-control" placeholder="Enter ...">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <label>NIM</label>
-                                                                <input name="nim" value="<?= $edit['nim']; ?>" type="number" class="form-control" placeholder="Enter ...">
+                                                                <input style="background-color: fuchsia; color: white;" min="100000000" max="999999999" name="nim" value="<?= $edit['nim']; ?>" type="number" class="form-control" placeholder="Enter ...">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -92,13 +92,13 @@ if (isset($_POST["submit"])) {
                                                             <!-- text input -->
                                                             <div class="form-group">
                                                                 <label>Matakuliah</label>
-                                                                <input name="matakuliah" value="<?= $edit['matakuliah']; ?>" type="text" class="form-control" placeholder="Enter ...">
+                                                                <input style="background-color: yellow; color: black;" name="matakuliah" value="<?= $edit['matakuliah']; ?>" type="text" class="form-control" placeholder="Enter ...">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <label>Nilai Tugas</label>
-                                                                <input name="nilai_tugas" value="<?= $edit['nilai_tugas']; ?>" type="number" max="100" class="form-control" placeholder="Enter ...">
+                                                                <input style="background-color: fuchsia; color: white;" name="nilai_tugas" value="<?= $edit['nilai_tugas']; ?>" type="number" max="100" class="form-control" placeholder="Enter ...">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -107,13 +107,13 @@ if (isset($_POST["submit"])) {
                                                             <!-- text input -->
                                                             <div class="form-group">
                                                                 <label>Nilai UTS</label>
-                                                                <input name="nilai_uts" value="<?= $edit['nilai_uts']; ?>" type="number" max="100" class="form-control" placeholder="Enter ...">
+                                                                <input style="background-color: yellow; color: black;" name="nilai_uts" value="<?= $edit['nilai_uts']; ?>" type="number" max="100" class="form-control" placeholder="Enter ...">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <label>Nilai UAS</label>
-                                                                <input name="nilai_uas" value="<?= $edit['nilai_uas']; ?>" type="number" max="100" class="form-control" placeholder="Enter ...">
+                                                                <input style="background-color: fuchsia; color: white;" name="nilai_uas" value="<?= $edit['nilai_uas']; ?>" type="number" max="100" class="form-control" placeholder="Enter ...">
                                                             </div>
                                                         </div>
                                                     </div>

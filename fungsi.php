@@ -118,3 +118,19 @@ function jumlahdata($key)
     global $conn;
     return mysqli_num_rows(mysqli_query($conn, "SELECT * FROM $key"));
 }
+
+// untuk menghitung berapa persen yang lulus
+function lulus($nama, $kuy)
+{
+    global $conn;
+    $jumlah =  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM $nama WHERE $kuy >= 60"));
+    return ($jumlah / jumlahdata('nilai')) * 100;
+}
+
+// untuk menghitung berapa persen yang lulus
+function tidak_lulus($nama, $kuy)
+{
+    global $conn;
+    $jumlah =  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM $nama WHERE $kuy < 60"));
+    return ($jumlah / jumlahdata('nilai')) * 100;
+}

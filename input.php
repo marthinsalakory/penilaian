@@ -46,7 +46,7 @@ if (isset($_POST["submit"])) {
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header bg-success">
                             <h3 class="card-title">Input Nilai</h3>
                         </div>
                         <!-- /.card-header -->
@@ -68,7 +68,7 @@ if (isset($_POST["submit"])) {
                                             <form action="" method="POST">
                                                 <div class="input-group mb-3">
                                                     <input required style="text-align: center;" type="text" class="form-control" name="nama[]" aria-label="nama">
-                                                    <input required style="text-align: center;" type="number" class="form-control" name="nim[]" aria-label="nim">
+                                                    <input required style="text-align: center;" type="number" class="form-control" min="100000000" max="999999999" name="nim[]" aria-label="nim">
                                                     <input required style="text-align: center;" type="text" class="form-control" name="matakuliah[]" aria-label="matakuliah">
                                                     <input required style="text-align: center;" type="number" max="100" class="form-control" name="nilai_tugas[]" aria-label="nilai_tugas">
                                                     <input required style="text-align: center;" type="number" max="100" class="form-control" name="nilai_uts[]" aria-label="nilai_uts">
@@ -108,7 +108,7 @@ if (isset($_POST["submit"])) {
             $("#tampil").before(`
                 <div class="input-group mb-3" id="hapus">
                     <input style="text-align: center;" required type="text" class="form-control" name="nama[]" aria-label="nama">
-                    <input style="text-align: center;" required type="number" class="form-control" name="nim[]" aria-label="nim">
+                    <input style="text-align: center;" required type="number" min="100000000" max="999999999"  class="form-control" name="nim[]" aria-label="nim">
                     <input style="text-align: center;" required type="text" class="form-control" name="matakuliah[]" aria-label="matakuliah">
                     <input style="text-align: center;" required type="number" max="100" class="form-control" name="nilai_tugas[]" aria-label="nilai_tugas">
                     <input style="text-align: center;" required type="number" max="100" class="form-control" name="nilai_uts[]" aria-label="nilai_uts">
