@@ -2,6 +2,37 @@
 
 include "fungsi.php";
 
+// cek login
+if (empty($_SESSION["login"])) {
+    header("Location: " . $BASEURL . "/login.php");
+    exit;
+}
+
+if (isset($_POST["login"])) {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    $result = mysqli_query($conn, "SELECT * FROM users WHERE username ='$username'");
+
+
+    // cek username
+    if (mysqli_num_rows($result) === 1) {
+
+        // cek password
+        $row = mysqli_fetch_assoc($result);
+        if (password_verify($password, $row["password"])) {
+            // set session
+            $_SESSION["login"] = true;
+
+            header("Location: " . $BASEURL);
+            exit;
+        }
+    }
+
+    $error = true;
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,27 +94,6 @@ include "fungsi.php";
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <!-- Navbar Search -->
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <div class="navbar-search-block">
-                        <form class="form-inline">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
@@ -92,6 +102,11 @@ include "fungsi.php";
                 <li class="nav-item">
                     <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                         <i class="fas fa-th-large"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= $BASEURL; ?>/logout.php">
+                        <i class="fas fa-power-off"></i>
                     </a>
                 </li>
             </ul>
@@ -111,10 +126,10 @@ include "fungsi.php";
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="asset/img/profil.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Marthin Alfreinsco Salakory</a>
+                        <a href="#" class="d-block"><?= strtoupper(user('nama_lengkap')); ?></a>
                     </div>
                 </div>
 

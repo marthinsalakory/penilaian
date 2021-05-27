@@ -3,6 +3,8 @@
 // BaseURL
 $BASEURL = "http://localhost/penilaian";
 
+session_start();
+
 // koneksi ke database
 $servername = "localhost";
 $username = "root";
@@ -20,6 +22,25 @@ function query($query)
         $rows[] = $row;
     }
     return $rows;
+}
+
+// untuk data user saja
+function user($key)
+{
+    $kuy = $_SESSION["user"];
+    return query("SELECT * FROM users WHERE id  = $kuy")[0][$key];
+}
+
+// untuk database
+function data($key)
+{
+    $kuy = user('id');
+    $data = query("SELECT * FROM $key WHERE user  = $kuy")[0]['user'];
+    if (!empty($data)) {
+        return $data;
+    } else {
+        return 0;
+    }
 }
 
 // ambil data dari tabel file
@@ -124,7 +145,11 @@ function lulus($nama, $kuy)
 {
     global $conn;
     $jumlah =  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM $nama WHERE $kuy >= 60"));
-    return ($jumlah / jumlahdata('nilai')) * 100;
+    if (!empty($jumlah)) {
+        return ($jumlah / jumlahdata('nilai')) * 100;
+    } else {
+        echo 0;
+    }
 }
 
 // untuk menghitung berapa persen yang lulus
@@ -132,5 +157,33 @@ function tidak_lulus($nama, $kuy)
 {
     global $conn;
     $jumlah =  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM $nama WHERE $kuy < 60"));
-    return ($jumlah / jumlahdata('nilai')) * 100;
+    if (!empty($jumlah)) {
+        return ($jumlah / jumlahdata('nilai')) * 100;
+    } else {
+        echo 0;
+    }
+}
+
+function register($data)
+{
+    global $conn;
+    $nama_lengkap = $data['nama_lengkap'];
+    $username = $data['username'];
+    $password = $data['password'];
+    $password2 = $data['password2'];
+
+    // cek konfirmasi password
+    if ($password != $password2) {
+        return false;
+    }
+
+    // query insert data
+    $query = "INSERT INTO users
+                    VALUES
+                    ('', '$nama_lengkap', '$username', '$password')
+                    ";
+    mysqli_query($conn, $query);
+
+
+    return mysqli_affected_rows($conn);
 }

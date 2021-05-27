@@ -78,7 +78,7 @@ include "header.php";
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>65</h3>
+                            <h3><?= jumlahdata("users"); ?></h3>
 
                             <p>Pengguna Apikasi</p>
                         </div>
