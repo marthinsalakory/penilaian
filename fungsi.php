@@ -53,6 +53,7 @@ function insert($data)
         if (empty($data['nama'][$i])) {
             break;
         }
+        $user = $data['user'][$i];
         $nama = $data['nama'][$i];
         $nim = $data['nim'][$i];
         $matakuliah = $data['matakuliah'][$i];
@@ -70,7 +71,7 @@ function insert($data)
         // query insert data
         $query = "INSERT INTO nilai
                     VALUES
-                    ('', '$nama', '$nim', '$matakuliah', '$nilai_tugas', '$nilai_uts', '$nilai_uas', '$nilai_akhir', '$status')
+                    ('', '$nama', '$nim', '$matakuliah', '$nilai_tugas', '$nilai_uts', '$nilai_uas', '$nilai_akhir', '$status', '$user')
                     ";
         mysqli_query($conn, $query);
     }

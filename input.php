@@ -67,6 +67,7 @@ if (isset($_POST["submit"])) {
                                             </div>
                                             <form action="" method="POST">
                                                 <div class="input-group mb-3">
+                                                    <input type="hidden" name="user" value="<?= user("id"); ?>">
                                                     <input required style="text-align: center;" type="text" class="form-control" name="nama[]" aria-label="nama">
                                                     <input required style="text-align: center;" type="number" class="form-control" min="100000000" max="999999999" name="nim[]" aria-label="nim">
                                                     <input required style="text-align: center;" type="text" class="form-control" name="matakuliah[]" aria-label="matakuliah">
