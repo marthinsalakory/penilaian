@@ -85,7 +85,7 @@ include "header.php";
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Read Only <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="user.php" class="small-box-footer">Read Only <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -98,7 +98,7 @@ include "header.php";
                     <div class="card bg-gradient-success">
                         <!-- /.card-header -->
                         <div class="card-body pt-0 mt-4">
-                            <h3 style="text-align: center;">Nama: Marthin Alfreinsco Salakory <br>NIM: 201971060 <br><b>TUGAS AKHIR WEB BASED SYSTEM</b></h3>
+                            <h3 style="text-align: center;">Nama: Marthin Alfreinsco Salakory <br>NIM: 201971060 <br><b>UJIAN AKHIR SEMESTER RPL</b></h3>
                         </div>
                         <!-- /.card-body -->
                     </div>

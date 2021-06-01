@@ -45,6 +45,8 @@ function data($key)
 
 // ambil data dari tabel file
 $nilai = $result = mysqli_query($conn, "SELECT * FROM nilai");
+// ambil data dari tabel users
+$users = $result = mysqli_query($conn, "SELECT * FROM users");
 
 function insert($data)
 {
@@ -117,12 +119,22 @@ function update($data)
     return mysqli_affected_rows($conn);
 }
 
-// function untuk menghapus data
+// function untuk menghapus data tabel nilai
 function delete($data)
 {
     $id = $data['id'];
     global $conn;
     mysqli_query($conn, "DELETE FROM nilai WHERE id = $id");
+
+    return mysqli_affected_rows($conn);
+}
+
+// function untuk menghapus data tabel users
+function delete_user($data)
+{
+    $id = $data['id'];
+    global $conn;
+    mysqli_query($conn, "DELETE FROM users WHERE id = $id");
 
     return mysqli_affected_rows($conn);
 }
